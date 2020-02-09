@@ -1,0 +1,22 @@
+---
+layout: default
+title:  "Blog"
+---
+
+{% for post in site.posts %}
+  <div class="{% cycle 'post', 'post white-post' %}">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+          <ba>Eric DePree</ba>
+          <br>
+          <bd>{{ post.date | date_to_long_string }}</bd>
+          <br>
+          <br>
+          <h4>{{ post.title }}</h4>
+          <p>{{ post.excerpt }}</p><a href="{{ post.url }}">Continue Reading...</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endfor %}
