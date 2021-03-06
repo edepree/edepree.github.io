@@ -22,7 +22,7 @@ Setting up the server is relatively quick in comparison to alternatives such as 
 * Generating the server's public/private key pair, and 
 * Configuring the server's public/private key pair.
 
-An additional item not included in the list above is configuring the server's IP address and network subnet. In this example the WireGuard network is configured as 172.16.0.x/24 and the server is configured to bind to 172.16.0.1/32.
+An additional item not included in the list above is configuring the server's IP address and network subnet. In this example the WireGuard subset is configured as 172.16.0.x/24 and the server is bound to the first address (172.16.0.1).
 
 ![WireGuard Server Configuration]({{ site.github.url }}/assets/images/007/02.png){:class="img-responsive center-margin"}
 
@@ -37,7 +37,7 @@ While the image belows shows how I accomplished this, it is not the only way. Fo
 
 Finally, after configuring the firewall rules for the WireGuard interface itself; one needs to permit external access to the server. This involves deploying a firewall rule to the WAN interface under `Firewall > Rules > WAN`. This should be configured to allow traffic to the port that was configured when setting up the WireGuard server.
 
-![pfSenese WAN ACLs]({{ site.github.url }}/assets/images/007/04.png){:class="img-responsive center-margin"}
+![pfSenes WAN ACLs]({{ site.github.url }}/assets/images/007/04.png){:class="img-responsive center-margin"}
 
 ### Configuring the Client
 
