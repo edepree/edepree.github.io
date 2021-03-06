@@ -1,3 +1,12 @@
 name: Eric DePree
 timezone: America/Chicago
 exclude: ['README.md', 'Gemfile', 'Gemfile.lock']
+lsi: false
+safe: true
+incremental: false
+highlighter: rouge
+gist:
+  noscript: false
+kramdown:
+  math_engine: mathjax
+  syntax_highlighter: rouge
