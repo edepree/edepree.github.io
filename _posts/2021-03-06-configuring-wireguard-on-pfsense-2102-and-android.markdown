@@ -3,6 +3,10 @@ layout: post
 title:  "Configuring WireGuard on pfSense 21.02 and Android"
 ---
 
+Note: After publishing this instance of the WireGuard package was removed from FreeBSD and subsequently [pfSense](https://www.netgate.com/blog/wireguard-removed-from-pfsense-ce-and-pfsense-plus-software). An updated post which leverages the WireGuard package can be found at [Configuring WireGuard Package on pfSense 21.05 and Android]({% post_url 2021-11-20-configuring-wireguard-package-on-pfsense-2105-and-android %})
+
+----
+
 With the recent release of pfSense 21.02 (and 2.5.0) one noteworthy change is the inclusion of WireGuard as a Virtual Private Network (VPN) provider. This guide covers configuring a WireGuard server on pfSense and a WireGuard client on Android.
 
 The requirements for this deployment were:
