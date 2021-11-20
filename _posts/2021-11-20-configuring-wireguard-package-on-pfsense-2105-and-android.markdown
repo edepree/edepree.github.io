@@ -3,7 +3,7 @@ layout: post
 title:  "Configuring WireGuard Package on pfSense 21.05 and Android"
 ---
 
-As of May 5th 2021 WireGuard is available as a package through pfSense's Package Manager. This guide covers configuring a WireGuard "server" using the WireGuard package v0.1.5_3 on pfSense 21.05_2 and a WireGuard "client" on Android.
+As of May 5th 2021 the WireGuard Virtual Private Network (VPN) software is available as a package through pfSense's Package Manager. This guide covers configuring a WireGuard "server" using the WireGuard package v0.1.5_3 on pfSense 21.05_2 and a WireGuard "client" on Android.
 
 While the terms "server" and "client" are not correct WireGuard nomenclature; they will be used throughout this post to reference the pfSense appliance and remote endpoints respectively.
 
@@ -38,7 +38,7 @@ After setting up the tunnel (adjusting default options as one desires), the next
 
 One will see two tabs associated with WireGuard. One for the VPN (WireGuard) and one for the tunnel's interface (in this example TUN_WG0; however naming will vary based on how it was configured). The firewall rules associated with the tunnel's interface itself can remain blank as no additional configuration is required.
 
-The image below shows how I deployed my ACLs, but it is not the only way. For someone not aiming to perform segmentation with their deployment these ACLs may be substituted for an allow any/any rule.
+The image below shows how I deployed my ACLs, but it is not the only way. For someone not aiming to perform segmentation with their deployment these ACLs may be substituted for a single allow any/any rule.
 
 ![WireGuard Interface ACLs]({{ site.github.url }}/assets/images/009/03.png){:class="img-responsive center-margin"}
 
@@ -52,13 +52,13 @@ Now that the server tunnel is configured we turn our focus to the client (a.k.a 
 
 First we must generate a new public/private key pair for the Android device. Then we must exchange public keys between the Android device and pfSense.
 
-After the key exchange is completed the Android peer can be configured on the WireGuard server. To complete this navigate to `VPN > WireGuard > Peers` and select `Add Peer`. Within this screen one can set a description for the peer, the public key for the peer, and assorted other settings. One area of importance is "Allowed IPs". By configuring the "Allowed IPs" to a single network address we can inform pfSense that any traffic destine for that IP should be delivered to that peer. The "Allowed IP" configured for a peer should be in alignment with the "Addresses" configured within the Android client (see below). This will allow for pfSense to route traffic appropriately in a multi-peer environment.
+After the key exchange is completed the Android peer can be configured on the WireGuard server. To complete this navigate to `VPN > WireGuard > Peers` and select `Add Peer`. Within this screen one can set a description for the peer, configure the public key for the peer which was previously exchanged from the Android device, and adjust other assorted settings. One area of importance to note is the "Allowed IPs" field. By configuring the "Allowed IPs" to a single unused network address within the tunnel's subnet we can inform pfSense that any traffic destine for that IP should be delivered to that peer. The "Allowed IPs" configured for a peer should be in alignment with the "Addresses" configured on the remote endpoint (see below). This will allow for pfSense to route traffic appropriately in a multi-peer environment.
 
 ![WireGuard Peer Configuration]({{ site.github.url }}/assets/images/009/05.png){:class="img-responsive center-margin"}
 
 Finally, the Android client needs to be configured. As illustrated in the image below the client is setup with its public/private key pair. It is also configured with a static address within the subnet configured earlier (see "Allowed IPs" above). Also, it is configured with an explicit DNS server in order to leverage the on-premises name resolution server.
 
-Additionally, the WireGuard server is configured as a peer of the Android device. This involves installing the server's public key, configuring the public address (or domain name) of the server, and setting up the "Allowed IPs" to 0.0.0.0/0 in order to establish a full tunnel connection.
+Additionally, the WireGuard server is configured as a peer of the Android device. This involves installing the server's public key, configuring the public address (or domain name) of the server, and setting up the "Allowed IPs" to 0.0.0.0/0 in order to route all traffic through the VPN.
 
 ![Android Configuration]({{ site.github.url }}/assets/images/007/06.png){:class="img-responsive center-margin"}
 

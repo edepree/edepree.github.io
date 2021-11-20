@@ -3,7 +3,7 @@ layout: post
 title:  "Configuring WireGuard on pfSense 21.02 and Android"
 ---
 
-Note: After publishing this instance of the WireGuard package was removed from FreeBSD and subsequently [pfSense](https://www.netgate.com/blog/wireguard-removed-from-pfsense-ce-and-pfsense-plus-software). An updated post which leverages the WireGuard package can be found at [Configuring WireGuard Package on pfSense 21.05 and Android]({% post_url 2021-11-20-configuring-wireguard-package-on-pfsense-2105-and-android %})
+Note: After publishing this article the WireGuard package was removed from FreeBSD and subsequently [pfSense](https://www.netgate.com/blog/wireguard-removed-from-pfsense-ce-and-pfsense-plus-software). An updated article which leverages the WireGuard package from the Package Manager, and which is configured slightly different, can be found at [Configuring WireGuard Package on pfSense 21.05 and Android]({% post_url 2021-11-20-configuring-wireguard-package-on-pfsense-2105-and-android %})
 
 ----
 
